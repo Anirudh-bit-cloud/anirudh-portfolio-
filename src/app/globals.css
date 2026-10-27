@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f4ef;
+  --bg-subtle: #eceae3;
+  --bg-card: #ffffff;
+  --fg: #0f1012;
+  --fg-muted: #5e6068;
+  --fg-faint: #9a9ca6;
+  --accent: #2e5bff;
+  --accent-hover: #1a44e8;
+  --accent-contrast: #ffffff;
+  --line: rgba(15, 16, 18, 0.12);
+  --line-subtle: rgba(15, 16, 18, 0.06);
+}
+
+.dark {
+  --bg: #0b0c0e;
+  --bg-subtle: #131518;
+  --bg-card: #181a1f;
+  --fg: #edeae3;
+  --fg-muted: #8e9099;
+  --fg-faint: #4e5058;
+  --accent: #d4ff3f;
+  --accent-hover: #c0ee28;
+  --accent-contrast: #0b0c0e;
+  --line: rgba(237, 234, 227, 0.12);
+  --line-subtle: rgba(237, 234, 227, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--fg);
+  scroll-behavior: auto; /* Handled smoothly by Lenis */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Hairline rule utilities */
+.hairline-b {
+  border-bottom: 1px solid var(--line);
+}
+.hairline-t {
+  border-top: 1px solid var(--line);
+}
+.hairline-l {
+  border-left: 1px solid var(--line);
+}
+.hairline-r {
+  border-right: 1px solid var(--line);
+}
+.hairline {
+  border: 1px solid var(--line);
+}
+
+/* Lenis smooth scroll recommended rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Mask utility for split text */
+.mask-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* Sleek Modal Scrollbar */
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 9999px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
