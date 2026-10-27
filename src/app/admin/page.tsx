@@ -82,13 +82,8 @@ export default function AdminPage() {
       setPinError("");
       showNotification("Welcome back, Anirudh! Dashboard unlocked.");
     } else {
-      setPinError("Invalid Passcode. (Try default: anirudh2026)");
+      setPinError("Invalid Passcode. Access denied.");
     }
-  };
-
-  const handleQuickDemoLogin = () => {
-    setIsAdmin(true);
-    showNotification("Demo session activated.");
   };
 
   const handleSavePersonal = (e: React.FormEvent) => {
@@ -167,7 +162,7 @@ export default function AdminPage() {
               <label className="text-fg-faint uppercase text-[10px]">Passcode / PIN</label>
               <input
                 type="password"
-                placeholder="Enter passcode (e.g. anirudh2026)"
+                placeholder="Enter passcode"
                 value={pinInput}
                 onChange={(e) => setPinInput(e.target.value)}
                 className="w-full px-4 py-2.5 rounded bg-bg hairline text-fg placeholder:text-fg-faint focus:outline-none focus:border-accent text-sm"
@@ -185,12 +180,6 @@ export default function AdminPage() {
           </form>
 
           <div className="pt-4 hairline-t flex flex-col gap-2 font-mono text-xs">
-            <button
-              onClick={handleQuickDemoLogin}
-              className="w-full py-2 rounded hairline bg-bg-subtle text-fg hover:border-fg transition-colors text-center"
-            >
-              1-Click Demo Unlock (Quick Access)
-            </button>
             <Link
               href="/"
               className="text-center text-fg-faint hover:text-fg transition-colors py-1"
